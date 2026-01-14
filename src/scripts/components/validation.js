@@ -16,11 +16,9 @@ const checkInputValidity = (formElement, inputElement, settings) => {
   if (!inputElement.validity.valid) {
     let errorMessage = '';
 
-    // Проверяем, нужно ли показать кастомное сообщение
     if (inputElement.validity.patternMismatch && inputElement.hasAttribute('data-error-message')) {
       errorMessage = inputElement.dataset.errorMessage;
     } else {
-      // Иначе используем стандартное сообщение браузера
       errorMessage = inputElement.validationMessage;
     }
 
@@ -56,7 +54,6 @@ const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
-  // Сразу делаем кнопку неактивной
   disableSubmitButton(buttonElement, settings);
 
   inputList.forEach((inputElement) => {
